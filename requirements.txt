@@ -1,3 +1,8 @@
+--index-url https://python.ampl.com
+--extra-index-url https://pypi.org/simple
+ampl_base
+ampl_highs
+amplpy
 altair
 pandas
 streamlit

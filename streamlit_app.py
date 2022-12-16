@@ -1,38 +1,43 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
+import os
+import tempfile
 import streamlit as st
 
+from amplpy import AMPL
+import ampl_base, ampl_highs
+
+
+def activate_license(uuid):
+    from urllib.request import urlretrieve
+
+    uuid = uuid.strip()
+    url = "https://portal.ampl.com/download/license/{}/ampl.lic".format(uuid)
+    tmpfile = tempfile.mktemp(".lic")
+    urlretrieve(url, tmpfile)
+    os.environ["AMPL_LICFILE"] = tmpfile
+    os.environ["AMPLKEY_RUNTIME_DIR"] = tempfile.mkdtemp()
+
+
+uuid = os.environ.get("AMPLKEY_UUID")
+if uuid is not None:
+    activate_license(uuid)
+
+ampl = AMPL()
+ampl.eval(
+    """
+set I := 1..1000;
+var x{I} binary;
+param v{i in I} := 1 + Irand224() mod 1000;
+param w{i in I} := 1 + Irand224() mod 1000;
+maximize profit: sum{i in I} v[i] * x[i];
+s.t. capacity: sum{i in I} w[i] * x[i] <= 1000;
 """
-# Welcome to Streamlit!
+)
+ampl.option["solver"] = "highs"
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+## Version
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+st.write(ampl.option["version"])
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+## Solve
 
-
-with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
-
-    Point = namedtuple('Point', 'x y')
-    data = []
-
-    points_per_turn = total_points / num_turns
-
-    for curr_point_num in range(total_points):
-        curr_turn, i = divmod(curr_point_num, points_per_turn)
-        angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-        radius = curr_point_num / total_points
-        x = radius * math.cos(angle)
-        y = radius * math.sin(angle)
-        data.append(Point(x, y))
-
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+st.write(ampl.get_output("solve;"))
