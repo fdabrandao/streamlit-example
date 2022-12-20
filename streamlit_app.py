@@ -4,7 +4,7 @@ import streamlit as st
 
 from amplpy import AMPL, tools
 
-tools.install_modules(["coin"], verbose=True)
+# tools.install_modules(["coin"], verbose=True)
 tools.load_modules(verbose=True)
 
 
