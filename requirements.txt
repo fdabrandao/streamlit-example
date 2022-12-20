@@ -1,8 +1,8 @@
---index-url https://python.ampl.com
+--index-url https://pypi.ampl.com
 --extra-index-url https://pypi.org/simple
-ampltools==0.2.9b2
-ampl_base
-ampl_highs
+ampltools==0.2.9b3
+ampl_module_base
+ampl_module_highs
 amplpy
 altair
 pandas
