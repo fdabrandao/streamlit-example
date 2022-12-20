@@ -4,7 +4,8 @@ import streamlit as st
 
 from amplpy import AMPL, tools
 
-tools.load_modules()
+tools.install_modules(["coin"], verbose=True)
+tools.load_modules(verbose=True)
 
 
 uuid = os.environ.get("AMPLKEY_UUID")
