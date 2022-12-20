@@ -2,24 +2,14 @@ import os
 import tempfile
 import streamlit as st
 
-from amplpy import AMPL
-import ampl_base, ampl_highs
+from amplpy import AMPL, tools
 
-
-def activate_license(uuid):
-    from urllib.request import urlretrieve
-
-    uuid = uuid.strip()
-    url = "https://portal.ampl.com/download/license/{}/ampl.lic".format(uuid)
-    tmpfile = tempfile.mktemp(".lic")
-    urlretrieve(url, tmpfile)
-    os.environ["AMPL_LICFILE"] = tmpfile
-    os.environ["AMPLKEY_RUNTIME_DIR"] = tempfile.mkdtemp()
+tools.load_modules()
 
 
 uuid = os.environ.get("AMPLKEY_UUID")
 if uuid is not None:
-    activate_license(uuid)
+    tools.activate_license(uuid, verbose=True)
 
 ampl = AMPL()
 ampl.eval(
