@@ -1,6 +1,6 @@
 --index-url https://pypi.ampl.com
 --extra-index-url https://pypi.org/simple
-ampltools==0.2.9b3
+ampltools
 ampl_module_base
 ampl_module_highs
 amplpy

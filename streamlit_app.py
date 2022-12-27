@@ -6,8 +6,6 @@ from amplpy import AMPL, tools
 
 # tools.install_modules(["coin"], verbose=True)
 tools.load_modules(verbose=True)
-
-
 uuid = os.environ.get("AMPLKEY_UUID")
 if uuid is not None:
     tools.activate_license(uuid, verbose=True)
