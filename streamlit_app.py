@@ -41,16 +41,24 @@ s.t. rdiag_attacks: alldiff ({j in 1..n} Row[j]-j);
 """
 )
 ampl.option["solver"] = "highs"
-ampl.option["highs_options"] = "outlev=0"
+ampl.option["highs_options"] = "outlev=1"
 
 n = st.slider("How many queens?", 2, 25, 8)
 
 ampl.param["n"] = n
-ampl.solve()
+output = ampl.get_output("solve;")
 solution = ampl.get_data("Row").to_dict()
 queens = set((int(r) - 1, int(c) - 1) for c, r in solution.items())
+
 st.write("# Solution")
+solution = "#" + " # " * (n) + "#\n"
 for r in range(n):
-    st.write(
-        "`" + "".join([" Q " if (r, c) in queens else " + " for c in range(n)]) + "`"
-    )
+    row = "".join([" Q " if (r, c) in queens else " + " for c in range(n)])
+    # st.write(f"`{row}`")
+    solution += "#" + row + "#\n"
+solution += "#" + " # " * (n) + "#\n"
+st.write(f"```\n{solution}\n```")
+
+
+st.write("# HiGHS output")
+st.write(f"```\n{output}\n```")
