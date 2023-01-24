@@ -2,10 +2,9 @@ import os
 import tempfile
 import streamlit as st
 
-from amplpy import AMPL, tools
+from amplpy import AMPL, modules, tools
 
-# tools.install_modules(["coin"], verbose=True)
-tools.load_modules(verbose=True)
+modules.load()
 uuid = os.environ.get("AMPLKEY_UUID")
 if uuid is not None:
     tools.activate_license(uuid, verbose=True)
