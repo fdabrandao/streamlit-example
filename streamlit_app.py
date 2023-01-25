@@ -71,11 +71,9 @@ To use them in streamlit you just need to list the modules in the [requirements.
 ```
 --index-url https://pypi.ampl.com # AMPL's Python Package Index
 --extra-index-url https://pypi.org/simple
-
 ampl_module_base # AMPL and base tools
 ampl_module_highs # HiGHS solver
 ampl_module_gurobi # Gurobi solver
-
 amplpy # Python API for AMPL
 ```
 
