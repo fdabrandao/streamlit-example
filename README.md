@@ -1,4 +1,4 @@
-# N-Queens examples witht AMPL and HiGHS using amplpy
+# N-Queens examples with AMPL and HiGHS using amplpy
 
 AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python.html)). To use them in streamlit you just need to list the modules in the [requirements.txt](requirements.txt) file as follows:
 ```
