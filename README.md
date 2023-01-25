@@ -1,5 +1,7 @@
 # N-Queens example with AMPL and HiGHS using amplpy
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/fdabrandao/streamlit-nqueens/)
+
 AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python.html)). To use them in [streamlit](https://streamlit.io/) you just need to list the modules in the [requirements.txt](requirements.txt) file as follows:
 ```
 --index-url https://pypi.ampl.com # AMPL's Python Package Index
@@ -17,7 +19,7 @@ modules.load()
 ```
 
 - Python API documentation: https://amplpy.readthedocs.io/
-- Python modules documentation: https://dev.ampl.com/ampl/python.html
+- Python modules documentation: https://dev.ampl.com/ampl/python/
 
 ## How to run it locally
 
@@ -28,4 +30,4 @@ $ python -m install -r requirements.txt --upgrade
 $ streamlit run streamlit_app.py
 ```
 
-When you are ready deploy to https://streamlit.io/!
+When you are ready deploy to https://streamlit.io/! This app is running there: https://share.streamlit.io/fdabrandao/streamlit-nqueens/

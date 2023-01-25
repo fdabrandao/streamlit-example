@@ -85,6 +85,9 @@ from amplpy import AMPL, modules
 modules.load()
 ```
 
+- GitHub repository for this app: https://github.com/fdabrandao/streamlit-nqueens
 - Python API documentation: https://amplpy.readthedocs.io
-- Python modules documentation: https://dev.ampl.com/ampl/python.html
+- Python modules documentation: https://dev.ampl.com/ampl/python/
+
+[![Hits](https://h.ampl.com/https://nqueens-with-ampl.streamlit.app/)](https://github.com/fdabrandao/streamlit-nqueens)
 """
