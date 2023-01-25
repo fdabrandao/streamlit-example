@@ -64,9 +64,9 @@ st.write(f"```\n{output}\n```")
 
 ## AMPL :heart: Python :heart: Streamlit
 
-### Deploy optimization apps to streamlit cloud with AMPL
+### Deploy optimization apps to Streamlit Cloud with AMPL
 
-AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python.html)).
+AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python/)).
 To use them in streamlit you just need to list the modules in the [requirements.txt](https://github.com/fdabrandao/streamlit-nqueens/blob/master/requirements.txt) file as follows:
 ```
 --index-url https://pypi.ampl.com # AMPL's Python Package Index
