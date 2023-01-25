@@ -18,3 +18,11 @@ modules.load()
 - Python API documentation: https://amplpy.readthedocs.io/
 - Python modules documentation: https://dev.ampl.com/ampl/python.html
 
+## How to run it locally
+
+```bash
+$ python -m venv venv
+$ sournce venv/bin/activate
+$ python -m install -r requirements.txt --upgrade
+$ streamlit run streamlit_app.py
+```

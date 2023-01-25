@@ -1,13 +1,11 @@
-import os
-import tempfile
 import streamlit as st
-
 from amplpy import AMPL, modules, tools
+import os
 
-modules.load()
-uuid = os.environ.get("AMPLKEY_UUID")
+modules.load()  # load all modules
+uuid = os.environ.get("AMPLKEY_UUID")  # Use a free https://ampl.com/ce license
 if uuid is not None:
-    tools.activate_license(uuid, verbose=True)
+    tools.activate_license(uuid, verbose=True)  # activate your license
 
 
 """
@@ -61,3 +59,25 @@ st.write(f"```\n{solution}\n```")
 
 st.write("# HiGHS output")
 st.write(f"```\n{output}\n```")
+
+"""
+## How can you do it too?
+
+AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python.html)). To use them in streamlit you just need to list the modules in the [requirements.txt](https://github.com/fdabrandao/streamlit-nqueens/blob/master/requirements.txt) file as follows:
+```
+--index-url https://pypi.ampl.com
+--extra-index-url https://pypi.org/simple
+ampl_module_base
+ampl_module_highs
+amplpy
+```
+
+and load them in [streamlit_app.py](https://github.com/fdabrandao/streamlit-nqueens/blob/master/streamlit_app.py):
+```python
+from amplpy import AMPL, modules
+modules.load()
+```
+
+- Python API documentation: https://amplpy.readthedocs.io
+- Python modules documentation: https://dev.ampl.com/ampl/python.html
+"""
