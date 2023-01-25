@@ -61,18 +61,25 @@ st.write("# HiGHS output")
 st.write(f"```\n{output}\n```")
 
 """
-## How can you do it too?
 
-AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python.html)). To use them in streamlit you just need to list the modules in the [requirements.txt](https://github.com/fdabrandao/streamlit-nqueens/blob/master/requirements.txt) file as follows:
+## AMPL :heart: Python :heart: Streamlit
+
+### Deploy optimization apps to streamlit cloud with AMPL
+
+AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python.html)).
+To use them in streamlit you just need to list the modules in the [requirements.txt](https://github.com/fdabrandao/streamlit-nqueens/blob/master/requirements.txt) file as follows:
 ```
---index-url https://pypi.ampl.com
+--index-url https://pypi.ampl.com # AMPL's Python Package Index
 --extra-index-url https://pypi.org/simple
-ampl_module_base
-ampl_module_highs
-amplpy
+
+ampl_module_base # AMPL and base tools
+ampl_module_highs # HiGHS solver
+ampl_module_gurobi # Gurobi solver
+
+amplpy # Python API for AMPL
 ```
 
-and load them in [streamlit_app.py](https://github.com/fdabrandao/streamlit-nqueens/blob/master/streamlit_app.py):
+and then just load them in [streamlit_app.py](https://github.com/fdabrandao/streamlit-nqueens/blob/master/streamlit_app.py):
 ```python
 from amplpy import AMPL, modules
 modules.load()
