@@ -2,6 +2,8 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/fdabrandao/streamlit-nqueens/)
 
+https://user-images.githubusercontent.com/4744242/214864752-a4b7f9b1-b0db-48f9-954f-5097bcdd38f6.mp4
+
 [AMPL and all Solvers are now available as Python Packages](https://dev.ampl.com/ampl/python.html). To use them in [streamlit](https://streamlit.io/) you just need to list the modules in the [requirements.txt](requirements.txt) file as follows:
 ```
 --index-url https://pypi.ampl.com # AMPL's Python Package Index
