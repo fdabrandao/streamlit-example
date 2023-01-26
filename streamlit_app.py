@@ -11,10 +11,7 @@ if uuid is not None:
 """
 # N-Queens
  
-**How can N queens be placed on an NxN chessboard so that no two of them attack each other?**
-
-
-## Modeling N-Queens with `alldiff`
+**How can $n$ queens be placed on an $n \\times n$ chessboard so that no two of them attack each other?**
 
 Constraint `alldiff` enforces a set of integer variables to take distinct values. Using `alldiff`, we can model N-Queens as follows:
 
@@ -47,7 +44,7 @@ output = ampl.get_output("solve;")
 solution = ampl.get_data("Row").to_dict()
 queens = set((int(r) - 1, int(c) - 1) for c, r in solution.items())
 
-st.write("# Solution")
+st.write("### Solution")
 solution = "#" + " # " * (n) + "#\n"
 for r in range(n):
     row = "".join([" Q " if (r, c) in queens else " + " for c in range(n)])
@@ -64,14 +61,14 @@ st.write(f"```\n{output}\n```")
 
 ## AMPL :heart: Python :heart: Streamlit
 
-### Deploy optimization apps to Streamlit Cloud with AMPL
+**Deploy optimization apps to [Streamlit Cloud](https://streamlit.io/) with AMPL**
 
-AMPL and all Solvers are now available as Python Packages ([see docs](https://dev.ampl.com/ampl/python/)).
-To use them in streamlit you just need to list the modules in the [requirements.txt](https://github.com/fdabrandao/streamlit-nqueens/blob/master/requirements.txt) file as follows:
+[AMPL and all Solvers are now available as Python Packages.](https://dev.ampl.com/ampl/python/)
+To use them in Streamlit you just need to list the modules in the [requirements.txt](https://github.com/fdabrandao/streamlit-nqueens/blob/master/requirements.txt) file as follows:
 ```
 --index-url https://pypi.ampl.com # AMPL's Python Package Index
 --extra-index-url https://pypi.org/simple
-ampl_module_base # AMPL and base tools
+ampl_module_base # AMPL
 ampl_module_highs # HiGHS solver
 ampl_module_gurobi # Gurobi solver
 amplpy # Python API for AMPL
@@ -81,6 +78,7 @@ and then just load them in [streamlit_app.py](https://github.com/fdabrandao/stre
 ```python
 from amplpy import AMPL, modules
 modules.load()
+ampl = AMPL()
 ```
 
 - GitHub repository for this app: https://github.com/fdabrandao/streamlit-nqueens
