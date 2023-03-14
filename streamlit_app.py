@@ -1,11 +1,10 @@
 import streamlit as st
-from amplpy import AMPL, modules, tools
+from amplpy import AMPL, modules
 import os
 
-modules.load()  # load all modules
 uuid = os.environ.get("AMPLKEY_UUID")  # Use a free https://ampl.com/ce license
 if uuid is not None:
-    tools.activate_license(uuid, verbose=True)  # activate your license
+    modules.activate(uuid)  # activate your license
 
 
 """
@@ -76,8 +75,7 @@ amplpy # Python API for AMPL
 
 and then just load them in [streamlit_app.py](https://github.com/fdabrandao/streamlit-nqueens/blob/master/streamlit_app.py):
 ```python
-from amplpy import AMPL, modules
-modules.load()
+from amplpy import AMPL
 ampl = AMPL()
 ```
 

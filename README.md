@@ -16,8 +16,7 @@ amplpy # Python API for AMPL
 
 and load them in [streamlit_app.py](streamlit_app.py):
 ```python
-from amplpy import AMPL, modules
-modules.load()
+from amplpy import AMPL
 ampl = AMPL()
 ```
 
